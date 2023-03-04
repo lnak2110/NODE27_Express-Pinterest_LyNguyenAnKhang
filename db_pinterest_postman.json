@@ -1,0 +1,408 @@
+{
+  "info": {
+    "_postman_id": "a962a48c-8fd5-4068-bdb8-de6dc2e8d247",
+    "name": "db_pinterest",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "23648979"
+  },
+  "item": [
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\":\"c@a.a\",\r\n    \"name\":\"c\",\r\n    \"age\":14,\r\n    \"password\":\"abcd\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{domain}}/auth/register",
+              "host": ["{{domain}}"],
+              "path": ["auth", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\":\"a@a.a\",\r\n    \"password\":\"abcd\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{domain}}/auth/login",
+              "host": ["{{domain}}"],
+              "path": ["auth", "login"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "picture",
+      "item": [
+        {
+          "name": "getPictures (getAll + getByNameQuery)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50IjoyLCJpYXQiOjE2NzczMTE2ODUsImV4cCI6MTY3NzMxMTk4NX0.gJa2LNYn2jlTFLY7LiHm2zj0r9t7J-keTdC1Z6zXh2M",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}/pictures?name=cat",
+              "host": ["{{domain}}"],
+              "path": ["pictures"],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "cat"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getPictureDetail",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50IjoyLCJpYXQiOjE2Nzc4MzQ0OTcsImV4cCI6MTY3NzgzNTA5N30.oGv-HhYPW6X7y5IildK1zwt3QDbT7SW-adC6S-jCvHQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}/pictures/3",
+              "host": ["{{domain}}"],
+              "path": ["pictures", "3"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getCommentsOfPicture",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50IjoxLCJpYXQiOjE2Nzc0MjM3NjIsImV4cCI6MTY3NzQyNDM2Mn0.WA0LbfXB1_nyAPEJ4gBigtocg2OYv_MViuhGvrdLtP8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}/pictures/1/comments",
+              "host": ["{{domain}}"],
+              "path": ["pictures", "1", "comments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getSavingStatusOfPicture",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50IjoxLCJpYXQiOjE2Nzc4MzM5NTcsImV4cCI6MTY3NzgzNDU1N30.mwGjFfEeYhqrnfaSipgIFA6wayQ80klivXxt3uT7p6I",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}/pictures/1/saving-status",
+              "host": ["{{domain}}"],
+              "path": ["pictures", "1", "saving-status"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "uploadPicture",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50IjoxLCJpYXQiOjE2Nzc4OTkyNDUsImV4cCI6MTY3Nzg5OTg0NX0.uwN9jS4GWj4Cn8pSI_gdvjU9E0F3WN8mdcCfuR6ntWQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "/C:/Users/VyL/Downloads/font.png"
+                },
+                {
+                  "key": "description",
+                  "value": "cat5",
+                  "contentType": "application/json",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{domain}}/pictures/upload-picture",
+              "host": ["{{domain}}"],
+              "path": ["pictures", "upload-picture"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addCommentToPicture",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50IjoyLCJpYXQiOjE2Nzc4OTkzNDEsImV4cCI6MTY3Nzg5OTk0MX0.rjhPyJpje_oI763VDmXyBBzvuWKW4huq3LK3wq_j7qw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"content\":\"yes\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{domain}}/pictures/12/comments",
+              "host": ["{{domain}}"],
+              "path": ["pictures", "12", "comments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "saveOnePicture (save + unsave))",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50IjoyLCJpYXQiOjE2Nzc4OTkzNDEsImV4cCI6MTY3Nzg5OTk0MX0.rjhPyJpje_oI763VDmXyBBzvuWKW4huq3LK3wq_j7qw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}/pictures/12",
+              "host": ["{{domain}}"],
+              "path": ["pictures", "12"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deletePicture",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50IjoxLCJpYXQiOjE2Nzc4OTk0NDAsImV4cCI6MTY3NzkwMDA0MH0._GNaZcpGhuE-W4X62XbD6dPdNh062HNuAYfPWYKwDsw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}/pictures/12",
+              "host": ["{{domain}}"],
+              "path": ["pictures", "12"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "getUserDetail",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50IjoyLCJpYXQiOjE2NzczMzE4NDYsImV4cCI6MTY3NzMzMjQ0Nn0.94AsmAvamj7AA_30Ag5pS7U6QBLnT0u_eugYc6bYGlw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}/users/3",
+              "host": ["{{domain}}"],
+              "path": ["users", "3"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getPicturesUploadedByUser",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50IjoxLCJpYXQiOjE2Nzc4MzM5NTcsImV4cCI6MTY3NzgzNDU1N30.mwGjFfEeYhqrnfaSipgIFA6wayQ80klivXxt3uT7p6I",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}/users/2/pictures-uploaded",
+              "host": ["{{domain}}"],
+              "path": ["users", "2", "pictures-uploaded"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getPicturesSavedByUser",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50IjoyLCJpYXQiOjE2Nzc4MzQ0OTcsImV4cCI6MTY3NzgzNTA5N30.oGv-HhYPW6X7y5IildK1zwt3QDbT7SW-adC6S-jCvHQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{domain}}/users/2/pictures-saved",
+              "host": ["{{domain}}"],
+              "path": ["users", "2", "pictures-saved"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateUser",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50IjoyLCJpYXQiOjE2Nzc4MzYyNzIsImV4cCI6MTY3NzgzNjg3Mn0.h9aPIk9Kxp5bbQanYMlTgITiN-qyCW22-mwpT9PpH2E",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\":\"b@a.a\",\r\n    \"name\":\"b\",\r\n    \"age\":10\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{domain}}/users/2/update",
+              "host": ["{{domain}}"],
+              "path": ["users", "2", "update"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "domain",
+      "value": "localhost:4000/api",
+      "type": "string"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  userId      Int           @id @unique @default(autoincrement())
+  email       String        @unique @db.VarChar(255)
+  password    String        @db.VarChar(255)
+  name        String        @db.VarChar(255)
+  age         Int?
+  avatar      String?       @db.VarChar(255)
+  Picture     Picture[]
+  SavePicture SavePicture[]
+  Comment     Comment[]
+}
+
+model Picture {
+  pictureId    Int           @id @unique @default(autoincrement())
+  name         String        @db.VarChar(255)
+  link         String        @unique @db.VarChar(255)
+  description  String?       @db.VarChar(255)
+  userUpload   User          @relation(fields: [userUploadId], references: [userId])
+  userUploadId Int
+  SavePicture  SavePicture[]
+  Comment      Comment[]
+}
+
+model SavePicture {
+  userSave       User      @relation(fields: [userSaveId], references: [userId])
+  pictureSaved   Picture   @relation(fields: [pictureSavedId], references: [pictureId])
+  savedAt        DateTime? @default(now())
+  userSaveId     Int
+  pictureSavedId Int
+
+  @@id([userSaveId, pictureSavedId], name: "savePictureData")
+}
+
+model Comment {
+  userComment        User      @relation(fields: [userCommentId], references: [userId])
+  pictureCommented   Picture   @relation(fields: [pictureCommentedId], references: [pictureId])
+  content            String    @db.VarChar(255)
+  commentedAt        DateTime? @default(now())
+  userCommentId      Int
+  pictureCommentedId Int
+
+  @@id([userCommentId, pictureCommentedId], name: "commentData")
+}
